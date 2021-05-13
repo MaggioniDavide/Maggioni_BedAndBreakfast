@@ -33,4 +33,45 @@ public class Prenotazione
         this.codicePrenotazione = codicePrenotazione;
     }
     
+    //metodi
+    public String getNome() 
+    {
+        return nome;
+    }
+
+    public String getCognome() 
+    {
+        return cognome;
+    }
+
+    public int getCodicefiscale() 
+    {
+        return codicefiscale;
+    }
+
+    public static int getN_STANZE() 
+    {
+        return N_STANZE;
+    }
+
+    public int getPrezzo() 
+    {
+        return prezzo;
+    }
+
+    public LocalDate getDataInizioSoggiorno() 
+    {
+        return dataInizioSoggiorno;
+    }
+
+    public LocalDate getDataFineSoggiorno() 
+    {
+        return dataFineSoggiorno;
+    }
+
+    public int getCodicePrenotazione() 
+    {
+        return codicePrenotazione;
+    }
+    
 }
