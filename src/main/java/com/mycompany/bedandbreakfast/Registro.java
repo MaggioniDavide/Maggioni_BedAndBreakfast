@@ -11,5 +11,5 @@ package com.mycompany.bedandbreakfast;
  */
 public class Registro 
 {
-    
+     
 }

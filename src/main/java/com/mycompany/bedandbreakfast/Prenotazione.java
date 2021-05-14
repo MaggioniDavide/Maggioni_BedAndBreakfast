@@ -33,7 +33,20 @@ public class Prenotazione
         this.codicePrenotazione = codicePrenotazione;
     }
     
+    //costruttore di copia
+    public Prenotazione(Prenotazione p)
+    {
+        this.nome= p.getNome();
+        this.cognome= p.getCognome();
+        this.codicefiscale= p.getCodicefiscale();
+        this.dataInizioSoggiorno= p.getDataInizioSoggiorno();
+        this.dataFineSoggiorno= p.getDataFineSoggiorno();
+        this.codicePrenotazione= p.getCodicePrenotazione();
+    }
+    
     //metodi
+    
+    //getter
     public String getNome() 
     {
         return nome;
@@ -74,4 +87,49 @@ public class Prenotazione
         return codicePrenotazione;
     }
     
+    //setter
+    public void setNome(String nome) 
+    {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) 
+    {
+        this.cognome = cognome;
+    }
+
+    public void setCodicefiscale(int codicefiscale) 
+    {
+        this.codicefiscale = codicefiscale;
+    }
+
+    public void setPrezzo(int prezzo)
+    {
+        this.prezzo = prezzo;
+    }
+
+    public void setDataInizioSoggiorno(LocalDate dataInizioSoggiorno) 
+    {
+        this.dataInizioSoggiorno = dataInizioSoggiorno;
+    }
+
+    public void setDataFineSoggiorno(LocalDate dataFineSoggiorno) 
+    {
+        this.dataFineSoggiorno = dataFineSoggiorno;
+    }
+
+    public void setCodicePrenotazione(int codicePrenotazione)
+    {
+        this.codicePrenotazione = codicePrenotazione;
+    }
+    
+    //toString
+    public String toString()
+    {
+         String s;
+         
+         s= "nome:"+getNome()+"cognome:"+getCognome()+"codice fiscale:"+getCodicefiscale()+"data di inizio soggiorno:"+getDataInizioSoggiorno()+"data di fine soggiorno:"+getDataFineSoggiorno()+"codice della prenotazione:"+getCodicePrenotazione();
+         
+         return s;    
+    }
 }
