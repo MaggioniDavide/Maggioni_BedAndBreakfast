@@ -16,31 +16,82 @@ public class Registro
     private static final int N_STANZE=5;
     private int nPrenotazioniPresenti;
     private int prezzo=40;
+    
+    
+    //costruttore
+    public Registro()
+    {
+        registroPrenotazioni=new Prenotazione[N_POSTI];
+        
+        this.nPrenotazioniPresenti=0;
+    }
 
     //aggiungi prenotazione
     public int aggiungiPrenotazione(Prenotazione p)
-    {
-        if(nPrenotazioniPresenti>=N_POSTI)
-            return 0;
-        
-        registroPrenotazioni[nPrenotazioniPresenti]=p;
-        nPrenotazioniPresenti++;
-        
-        return 1;
+    {      
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]==null)
+              {
+                 registroPrenotazioni[i]=new Prenotazione(p);
+                 nPrenotazioniPresenti++;
+                 
+                 return 0;
+              }  
+        }
+        return -1;
     }
   
     //elimina prenotazione
-    public int eliminaPrenotazione(Prenotazione p)
+    public int eliminaPrenotazione(int codicePrenotazione)
     {
-        
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+              {
+                 if(registroPrenotazioni[i].getCodicePrenotazione()==codicePrenotazione)
+                 {
+                     registroPrenotazioni[i]=null;
+                     nPrenotazioniPresenti--;
+                     
+                     return 0;
+                 }
+              }  
+        }
+        return -1;
     }
-    
-    
-    
+      
     //visualizza prenotazione
-    
+    public void visualizzaPrenotazione()
+    {
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+              {
+                  System.out.println(registroPrenotazioni[i].toString());
+              }  
+        }
+        System.out.println("Nessuna prenotazione presente");
+    }
     
     
     
     //visualizza dati cliente
+    
+    
+    //toString
+    public String toString()
+    {
+        String s="";
+         
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+              {
+                  s=s+registroPrenotazioni[i].toString()+"\n";
+              }  
+        }
+         
+        return s;    
+    }
 }

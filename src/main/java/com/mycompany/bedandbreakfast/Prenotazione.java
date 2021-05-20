@@ -23,13 +23,13 @@ public class Prenotazione
     private int codicePrenotazione;
     
     //costruttore
-    public Prenotazione(String nome, String cognome, int codicefiscale, String dataInizioSoggiorno, String dataFineSoggiorno, int codicePrenotazione, int anno, int mese, int giorno) 
+    public Prenotazione(String nome, String cognome, int codicefiscale, LocalDate dataInizioSoggiorno, LocalDate dataFineSoggiorno, int codicePrenotazione) 
     {
         this.nome = nome;
         this.cognome = cognome;
         this.codicefiscale = codicefiscale;
-        this.dataInizioSoggiorno = LocalDate.of(anno, mese, giorno);
-        this.dataFineSoggiorno = LocalDate.of(anno, mese, giorno);
+        this.dataInizioSoggiorno = dataInizioSoggiorno;
+        this.dataFineSoggiorno = dataFineSoggiorno;
         this.codicePrenotazione = codicePrenotazione;
     }
     
