@@ -132,22 +132,5 @@ public class Prenotazione
          
          return s;    
     }
-    
-    //aggiungi prenotazione
-    
-    
-    
-    
-    //elimina prenotazione
-    
-    
-    
-    
-    //visualizza prenotazione
-    
-    
-    
-    
-    //visualizza dati cliente
-    
+      
 }
