@@ -135,4 +135,19 @@ public class Prenotazione
     
     //aggiungi prenotazione
     
+    
+    
+    
+    //elimina prenotazione
+    
+    
+    
+    
+    //visualizza prenotazione
+    
+    
+    
+    
+    //visualizza dati cliente
+    
 }
