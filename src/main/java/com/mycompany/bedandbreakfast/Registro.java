@@ -17,7 +17,6 @@ public class Registro
     private int nPrenotazioniPresenti;
     private int prezzo=40;
     
-    
     //costruttore
     public Registro()
     {
@@ -74,10 +73,43 @@ public class Registro
         System.out.println("Nessuna prenotazione presente");
     }
     
-    
-    
     //visualizza dati cliente
+    public void visualizzaCliente(int codicefiscale)
+    {
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+            {
+                if(registroPrenotazioni[i].getCodicefiscale()==codicefiscale)
+                   {
+                       System.out.println("nome: "+registroPrenotazioni[i].getNome()+","+" cognome: "+registroPrenotazioni[i].getCognome()+","+" codice fiscale: "+registroPrenotazioni[i].getCodicefiscale());
+                       
+                       return;
+                   }
+            }
+            
+        }
+        System.out.println("Nessun cliente corrisponde a questo codice fiscale");
+    }
     
+    //visualizza tutte le prenotazioni di un cliente
+    public void visualizzaPrenotazioniCliente(int codicefiscale)
+    {
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+            {
+                if(registroPrenotazioni[i].getCodicefiscale()==codicefiscale)
+                   {
+                       System.out.println(registroPrenotazioni[i].toString());
+                       
+                       return;
+                   }
+            }
+            
+        }
+        System.out.println("Nessun cliente corrisponde a questo codice fiscale");
+    }
     
     //toString
     public String toString()

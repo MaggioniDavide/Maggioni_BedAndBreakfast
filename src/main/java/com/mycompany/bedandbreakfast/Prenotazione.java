@@ -17,7 +17,7 @@ public class Prenotazione
     private String cognome;
     private int codicefiscale;
     private static final int N_STANZE=5;
-    private int prezzo=40;
+    private final int prezzo=40;
     private LocalDate dataInizioSoggiorno;
     private LocalDate dataFineSoggiorno;
     private int codicePrenotazione;
@@ -30,7 +30,7 @@ public class Prenotazione
         this.codicefiscale = codicefiscale;
         this.dataInizioSoggiorno = dataInizioSoggiorno;
         this.dataFineSoggiorno = dataFineSoggiorno;
-        this.codicePrenotazione = codicePrenotazione;
+        this.codicePrenotazione = codicePrenotazione;   
     }
     
     //costruttore di copia
@@ -103,11 +103,6 @@ public class Prenotazione
         this.codicefiscale = codicefiscale;
     }
 
-    public void setPrezzo(int prezzo)
-    {
-        this.prezzo = prezzo;
-    }
-
     public void setDataInizioSoggiorno(LocalDate dataInizioSoggiorno) 
     {
         this.dataInizioSoggiorno = dataInizioSoggiorno;
@@ -128,7 +123,7 @@ public class Prenotazione
     {
          String s;
          
-         s= "nome:"+getNome()+"cognome:"+getCognome()+"codice fiscale:"+getCodicefiscale()+"data di inizio soggiorno:"+getDataInizioSoggiorno()+"data di fine soggiorno:"+getDataFineSoggiorno()+"codice della prenotazione:"+getCodicePrenotazione();
+         s= "nome: "+getNome()+","+" cognome: "+getCognome()+","+" codice fiscale: "+getCodicefiscale()+","+" data di inizio soggiorno: "+getDataInizioSoggiorno()+","+" data di fine soggiorno: "+getDataFineSoggiorno()+","+" codice della prenotazione: "+getCodicePrenotazione()+","+" prezzo: "+getPrezzo();
          
          return s;    
     }
