@@ -14,6 +14,7 @@ public class Registro
     private Prenotazione[] registroPrenotazioni;
     private static final int N_POSTI=100;
     private static final int N_STANZE=5;
+    private static int [] stanze;
     private int nPrenotazioniPresenti;
     private int prezzo=40;
     
@@ -21,8 +22,22 @@ public class Registro
     public Registro()
     {
         registroPrenotazioni=new Prenotazione[N_POSTI];
+        stanze= new int[N_STANZE];
         
         this.nPrenotazioniPresenti=0;
+    }
+    
+    //stanze libere
+    public static int StanzaLibera(int[] stanze)
+    {
+        for(int i=0;i<stanze.length;i++)
+        {
+            if(stanze[i]!=1)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     //aggiungi prenotazione
@@ -32,7 +47,19 @@ public class Registro
         {
             if(registroPrenotazioni[i]==null)
               {
+                 int stanza=StanzaLibera(stanze);
+                 if(stanza==-1)
+                 {
+                     System.out.println("tutte le stazne sono occupate");
+                     return -1;
+                 }
+                 else
+                 {
+                     p.setStanza(stanza+1);
+                     stanze[stanza]=1;
+                 }
                  registroPrenotazioni[i]=new Prenotazione(p);
+                 System.out.println("inserimento avvenuto correttamente!");
                  nPrenotazioniPresenti++;
                  
                  return 0;
@@ -92,9 +119,10 @@ public class Registro
         System.out.println("Nessun cliente corrisponde a questo codice fiscale");
     }
     
-    //visualizza tutte le prenotazioni di un cliente
+    //visualizza tutte le prenotazioni effettuate da un cliente
     public void visualizzaPrenotazioniCliente(int codicefiscale)
     {
+        int a=0;
         for(int i=0;i<this.registroPrenotazioni.length;i++)
         {
             if(registroPrenotazioni[i]!=null)
@@ -102,14 +130,22 @@ public class Registro
                 if(registroPrenotazioni[i].getCodicefiscale()==codicefiscale)
                    {
                        System.out.println(registroPrenotazioni[i].toString());
-                       
-                       return;
+                       a++;
                    }
             }
             
         }
-        System.out.println("Nessun cliente corrisponde a questo codice fiscale");
+        if(a==0)
+        {
+            System.out.println("Nessun cliente corrisponde a questo codice fiscale");
+        }
+        else 
+        {
+            return;
+        }
     }
+    
+    //visualizza tutte le prenotazioni avute da una determinata stanza
     
     //toString
     public String toString()
