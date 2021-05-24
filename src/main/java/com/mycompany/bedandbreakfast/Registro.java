@@ -5,6 +5,8 @@
  */
 package com.mycompany.bedandbreakfast;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Studente
@@ -50,7 +52,7 @@ public class Registro
                  int stanza=StanzaLibera(stanze);
                  if(stanza==-1)
                  {
-                     System.out.println("tutte le stazne sono occupate");
+                     System.out.println("tutte le stanze sono occupate");
                      return -1;
                  }
                  else
@@ -90,6 +92,9 @@ public class Registro
     //visualizza prenotazione
     public void visualizzaPrenotazione()
     {
+        if(nPrenotazioniPresenti==0)
+        System.out.println("Nessuna prenotazione presente");
+        
         for(int i=0;i<this.registroPrenotazioni.length;i++)
         {
             if(registroPrenotazioni[i]!=null)
@@ -97,7 +102,7 @@ public class Registro
                   System.out.println(registroPrenotazioni[i].toString());
               }  
         }
-        System.out.println("Nessuna prenotazione presente");
+        
     }
     
     //visualizza dati cliente
@@ -146,6 +151,48 @@ public class Registro
     }
     
     //visualizza tutte le prenotazioni avute da una determinata stanza
+    public void visualizzaPrenotazioniStanze(int stanza)
+    {
+        int a=0;
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+            {
+                if(registroPrenotazioni[i].getStanza()==stanza)
+                   {
+                       System.out.println(registroPrenotazioni[i].toString());
+                       a++;
+                   }
+            }
+            
+        }
+    }
+    
+    //visualizza stanze occupate in una data
+    public int visualizzaStanzeOccupate(LocalDate dataDaControllare)
+    {
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+            {
+                LocalDate inizio=registroPrenotazioni[i].getDataInizioSoggiorno();
+                LocalDate fine=registroPrenotazioni[i].getDataFineSoggiorno();
+
+                if(dataDaControllare.isAfter(inizio))
+                {
+                    if(dataDaControllare.isBefore(fine))
+                    {
+                        System.out.println("stanze occupate: "+registroPrenotazioni[i].getStanza());
+
+                    }
+
+                }
+                System.out.println("stanze libere: "+registroPrenotazioni[i].getStanza());
+        
+            }
+               
+        }return 0;  
+    }
     
     //toString
     public String toString()
