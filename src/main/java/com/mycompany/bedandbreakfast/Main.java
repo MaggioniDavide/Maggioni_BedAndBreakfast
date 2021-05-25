@@ -190,7 +190,8 @@ public class Main
                      {
                          r1.esportaPrenotazioneCsv(nomeFileCSV);
                          System.out.println("esportazione avvenuta correttamente");
-                     } 
+                     }
+                      
                      catch(IOException e1)
                      {
                          System.out.println("impossibire accedere al FILE");

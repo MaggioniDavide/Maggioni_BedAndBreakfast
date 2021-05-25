@@ -63,17 +63,6 @@ public class Registro
             if(registroPrenotazioni[i]==null)
               {
                   
-                 int stanza=StanzaLibera(stanze);
-                 if(stanza==-1)
-                 {
-                     System.out.println("tutte le stanze sono occupate");
-                     return -1;
-                 }
-                 else
-                 {
-                     p.setStanza(stanza+1);
-                     stanze[stanza]=1;
-                 }
                  registroPrenotazioni[i]=new Prenotazione(p);
                  System.out.println("inserimento avvenuto correttamente!");
                  nPrenotazioniPresenti++;
