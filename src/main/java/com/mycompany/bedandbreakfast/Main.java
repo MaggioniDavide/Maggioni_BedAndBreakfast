@@ -12,20 +12,23 @@ import java.time.Month;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Studente
  */
 public class Main 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException, EccezionePosizioneNonValida, FileExeption
     {
         int sceltaUtente=-1;
         int esito;
         Registro r1=new Registro();
         Prenotazione p;
         Scanner tastiera= new Scanner(System.in);
-        String[] vociMenu= new String[8];
+        String[] vociMenu= new String[10];
+        String nomeFileCSV="Prenotazioni.txt";
+        String nomeFileBinario="Prenotazione.bin";
         
         //voci menu
         vociMenu[0] = "Esci dal registro";
@@ -36,9 +39,22 @@ public class Main
         vociMenu[5] = "Visualizza tutte le prenotazioni di un cliente";
         vociMenu[6] = "visualizza tutte le prenotazioni di una stanza";
         vociMenu[7] = "visualizza stanze occupate in una data";
+        vociMenu[8] = "esporta file csv";
+        vociMenu[9] = "salva dati";
         
         
         Menu menu= new Menu(vociMenu);
+        
+        try 
+        {
+            
+            r1.caricaPrenotazione(nomeFileBinario);
+            System.out.println("Dati caricati correttamente");
+        }
+        catch (IOException ex) 
+        {
+            System.out.println("Impossibile accedere al file. I dati non sono stati caricati");
+        }
         
         do
         {
@@ -143,6 +159,8 @@ public class Main
                     System.out.println("inserisci stanza per visualizzare tutte le prenotazioni effettuate su di essa: ");
                     stanza=tastiera.nextInt();
                     r1.visualizzaPrenotazioniStanze(stanza);
+                    
+                    break;
                 }
                  case 7:
                 {
@@ -164,7 +182,37 @@ public class Main
                     
                     r1.visualizzaStanzeOccupate(d1);
                     
-                    
+                    break;    
+                }
+                 case 8:
+                {
+                     try
+                     {
+                         r1.esportaPrenotazioneCsv(nomeFileCSV);
+                         System.out.println("esportazione avvenuta correttamente");
+                     } 
+                     catch(IOException e1)
+                     {
+                         System.out.println("impossibire accedere al FILE");
+                     }
+                     catch(EccezionePosizioneNonValida |  FileExeption e2)
+                     {
+                         System.out.println(e2.toString());
+                     }
+                      break;
+                }
+                 case 9:
+                {
+                     try
+                     {
+                         r1.salvaPrenotazione(nomeFileBinario);
+                         System.out.println("dati salvati correttamente");
+                     }
+                     catch(IOException ex)
+                     {
+                         System.out.println("impossibile accedere al file");
+                     }
+                      break;
                 }
             }
             

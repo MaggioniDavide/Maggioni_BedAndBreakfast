@@ -76,7 +76,7 @@ public class Prenotazione implements Serializable
         return nome;
     }
 
-    public String getCognome() 
+    public String getCognome()
     {
         return cognome;
     }

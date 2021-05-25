@@ -5,7 +5,14 @@
  */
 package com.mycompany.bedandbreakfast;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
+
 
 /**
  *
@@ -215,22 +222,98 @@ public class Registro
             {
                 LocalDate inizio=registroPrenotazioni[i].getDataInizioSoggiorno();
                 LocalDate fine=registroPrenotazioni[i].getDataFineSoggiorno();
-
-                if(dataDaControllare.isAfter(inizio))
+                
+                if(dataDaControllare==inizio)
+                {
+                    System.out.println("stanze occupate: "+registroPrenotazioni[i].getStanza());
+                }
+                else if(dataDaControllare==fine)
+                {
+                    System.out.println("stanze occupate: "+registroPrenotazioni[i].getStanza());
+                }
+                else if(dataDaControllare.isAfter(inizio))
                 {
                     if(dataDaControllare.isBefore(fine))
                     {
                         System.out.println("stanze occupate: "+registroPrenotazioni[i].getStanza());
-
                     }
 
                 }
+                
+                
                 System.out.println("stanze libere: "+registroPrenotazioni[i].getStanza());
         
             }
                
         }return 0;  
     }
+    
+    
+    public void esportaPrenotazione(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileExeption
+    { 
+      TextFile f1= new TextFile(nomeFile, 'w');
+      
+      for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)
+                {
+                  f1.toFile("Nome-->"+registroPrenotazioni[i].getNome()+"; "+"cognome-->"+registroPrenotazioni[i].getCognome()+"; "+"codice fiscale-->"+registroPrenotazioni[i].getCodicefiscale()+"; "+"data inizio-->"+registroPrenotazioni[i].getDataInizioSoggiorno()+"; "+"data fine-->"+registroPrenotazioni[i].getDataFineSoggiorno()+";"+"codice prenotazione-->"+registroPrenotazioni[i].getCodicePrenotazione()+";"+"stanza-->"+registroPrenotazioni[i].getStanza());
+                   
+                }
+        }
+             
+    }
+        
+   
+    
+    
+    
+    public void esportaPrenotazioneCsv(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileExeption
+    {
+        TextFile f1= new TextFile(nomeFile, 'W');
+        String rigaDaScrivere="";
+      
+        for(int i=0;i<this.registroPrenotazioni.length;i++)
+        {
+            if(registroPrenotazioni[i]!=null)             
+                { 
+                    rigaDaScrivere="Nome-->"+registroPrenotazioni[i].getNome()+"; "+"cognome-->"+registroPrenotazioni[i].getCognome()+"; "+"codice fiscale-->"+registroPrenotazioni[i].getCodicefiscale()+"; "+"data inizio-->"+registroPrenotazioni[i].getDataInizioSoggiorno()+"; "+"data fine-->"+registroPrenotazioni[i].getDataFineSoggiorno()+";"+"codice prenotazione-->"+registroPrenotazioni[i].getCodicePrenotazione()+";"+"stanza-->"+registroPrenotazioni[i].getStanza();  
+                }
+        }
+      
+    f1.close();
+    }
+    
+    
+    public void salvaPrenotazione(String nomeFile) throws FileNotFoundException, IOException
+  {
+      FileOutputStream f1=new FileOutputStream(nomeFile);
+      ObjectOutputStream writer=new ObjectOutputStream(f1);
+      writer.writeObject(this);
+      writer.flush();
+      writer.close();
+  }
+    
+    
+    
+    public Prenotazione caricaPrenotazione(String nomeFile) throws FileNotFoundException, IOException, FileExeption 
+  {
+      FileInputStream f1=new FileInputStream(nomeFile);
+      ObjectInputStream inputStream=new ObjectInputStream(f1);
+      Prenotazione s;
+       try 
+       {
+           s=(Prenotazione)inputStream.readObject();
+           inputStream.close();
+            return s;
+       } 
+       catch (ClassNotFoundException ex) 
+       {
+          inputStream.close();
+          throw new FileExeption("Errore nella lettura del file");
+       }
+       
+  }
     
     //toString
     public String toString()
