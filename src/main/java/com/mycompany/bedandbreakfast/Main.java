@@ -164,7 +164,7 @@ public class Main
                 }
                  case 7:
                 {
-                    //
+                    //visualizza tutte le stanze occupate in una data
                     int anno;
                     int mese;
                     int giorno;
@@ -186,6 +186,7 @@ public class Main
                 }
                  case 8:
                 {
+                    //esporta la tutte le prenotazioni in un file CSV
                      try
                      {
                          r1.esportaPrenotazioneCsv(nomeFileCSV);
@@ -204,6 +205,7 @@ public class Main
                 }
                  case 9:
                 {
+                    //salva tutti i dati in binario
                      try
                      {
                          r1.salvaPrenotazione(nomeFileBinario);

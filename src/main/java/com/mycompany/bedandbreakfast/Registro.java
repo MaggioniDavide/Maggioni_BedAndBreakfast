@@ -255,8 +255,15 @@ public class Registro
         
    
     
-    
-    
+    //esporta prenotazione CSV
+    /**
+     * questo metodo serve per esportare in formato csv il file
+     * viene passato nome file: il file che vogliamo venga esportato
+     * @param nomeFile
+     * @throws IOException
+     * @throws EccezionePosizioneNonValida
+     * @throws FileExeption 
+     */
     public void esportaPrenotazioneCsv(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileExeption
     {
         TextFile f1= new TextFile(nomeFile, 'W');
@@ -273,7 +280,14 @@ public class Registro
     f1.close();
     }
     
-    
+    //salva dati
+    /**
+     * questo metodo serve per salvare tutti i dati in binario
+     * viene passato nome file cio il file con all'interno i dati da voler trasformare in binario
+     * @param nomeFile
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public void salvaPrenotazione(String nomeFile) throws FileNotFoundException, IOException
   {
       FileOutputStream f1=new FileOutputStream(nomeFile);
@@ -305,6 +319,10 @@ public class Registro
   }
     
     //toString
+    /**
+     * questo metodo mostra tutti gli attributi
+     * @return 
+     */
     public String toString()
     {
         String s="";
