@@ -43,12 +43,19 @@ public class Registro
     }
 
     //aggiungi prenotazione
+    /**
+     * questo metodo serve per creare ed aggiungere una prenotazione al registro
+     * al metodo viene passato p che contiene al suo interno tutti gli attributi utili: nome,cognome,codicefiscale,datainizio,datafine,numeroprenotazione e stanza
+     * @param p
+     * @return 
+     */
     public int aggiungiPrenotazione(Prenotazione p)
     {      
         for(int i=0;i<this.registroPrenotazioni.length;i++)
         {
             if(registroPrenotazioni[i]==null)
               {
+                  
                  int stanza=StanzaLibera(stanze);
                  if(stanza==-1)
                  {
@@ -71,6 +78,13 @@ public class Registro
     }
   
     //elimina prenotazione
+    /**
+     * questo metodo serve per eliminare una prenotazione precedentemente inserita nel registro
+     * al metodo viene passato l'attributo codiceprenotazione: tramite questo attributo possiamo risalire all intero testo delle prenotazione ed eliminarlo(serve ad identificare la prenotazione)
+     * @param codicePrenotazione
+     * @return 
+     */
+
     public int eliminaPrenotazione(int codicePrenotazione)
     {
         for(int i=0;i<this.registroPrenotazioni.length;i++)
@@ -90,6 +104,9 @@ public class Registro
     }
       
     //visualizza prenotazione
+    /**
+     * questo metodo serve per visualizzare tutte le prenotazioni inserite nel registro
+     */
     public void visualizzaPrenotazione()
     {
         if(nPrenotazioniPresenti==0)
@@ -106,6 +123,11 @@ public class Registro
     }
     
     //visualizza dati cliente
+    /**
+     * questo metodo serve per visualizzare i dati di un cliente (nome,cognome,codicefiscale)
+     * al metodo viene passato l'attributo codice fiscale: tramite questo attributo possiamo visualizzare tutti i dati dell'utente identificandolo
+     * @param codicefiscale 
+     */
     public void visualizzaCliente(int codicefiscale)
     {
         for(int i=0;i<this.registroPrenotazioni.length;i++)
@@ -125,6 +147,11 @@ public class Registro
     }
     
     //visualizza tutte le prenotazioni effettuate da un cliente
+    /**
+     * questo metodo serve per visualizzare tutte le prenotazioni che un cliente ha effettuato presso il bed and breakfast
+     * al metodo viene passato l'attributo codice fiscale : serve per individuare l'utente e ci mostrerà tutti i dati (nome,cognome,codicefiscale,data inizio,data fine,codice prenotazione e stanza)di tutte le prenotazioni con quel codice fiscale
+     * @param codicefiscale 
+     */
     public void visualizzaPrenotazioniCliente(int codicefiscale)
     {
         int a=0;
@@ -151,6 +178,11 @@ public class Registro
     }
     
     //visualizza tutte le prenotazioni avute da una determinata stanza
+    /**
+     * questo metodo serve per individuare tutte le prenotazioni che sono state efettuate su una determinata stanza del bed and breakfast
+     * al metodo viene passato l'attributo stanza: serve per indicare quale stanza si vuole controllare e tramite esso riusciremo a risalire a tutte le prenotazioni contenenti quella stanza
+     * @param stanza 
+     */
     public void visualizzaPrenotazioniStanze(int stanza)
     {
         int a=0;
@@ -169,6 +201,12 @@ public class Registro
     }
     
     //visualizza stanze occupate in una data
+    /**
+     * questo metodo serve per visualizzare in una determinata data quali stanze saranno occupate
+     * al metodo passiamo l'attributo datadacontrollare: serve per creare una data che verrà confrontata con tutte le date presenti nel registro (quindi tutte le prenotazioni) e controllarà quali e quante stanza sono occupate e quali sono libere in quel determinato giorno
+     * @param dataDaControllare
+     * @return 
+     */
     public int visualizzaStanzeOccupate(LocalDate dataDaControllare)
     {
         for(int i=0;i<this.registroPrenotazioni.length;i++)

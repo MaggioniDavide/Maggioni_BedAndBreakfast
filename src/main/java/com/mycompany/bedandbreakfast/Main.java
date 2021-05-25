@@ -92,6 +92,8 @@ public class Main
                     System.out.println("Codice prenotazione: ");
                     p.setCodicePrenotazione(tastiera.nextInt()); 
                     
+                    System.out.println("stanza da assegnare: ");
+                    p.setStanza(tastiera.nextInt());
                     
                     r1.aggiungiPrenotazione(p);
                   

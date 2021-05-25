@@ -61,6 +61,11 @@ public class Prenotazione implements Serializable
     //metodi
     
     //getter
+    /**
+     * viene restituito l'attributo che viene passato
+     * @return 
+     */
+
     public int getStanza() 
     {
         return stanza;
@@ -107,42 +112,68 @@ public class Prenotazione implements Serializable
     }
     
     //setter
+    /**
+     * modifica il valore dell'attributo stanza
+     * @param stanza 
+     */
     public void setStanza(int stanza) 
     {
         this.stanza = stanza;
     }
-    
+    /**
+     * modifica il valore dell'attributo nome
+     * @param nome 
+     */
     public void setNome(String nome) 
     {
         this.nome = nome;
     }
-
+    /**
+    * modifica il valore dell'attributo cognome
+    * @param cognome 
+    */
     public void setCognome(String cognome) 
     {
         this.cognome = cognome;
     }
-
+    /**
+     * modifica il valore dell'attributo codice fiscale
+     * @param codicefiscale 
+     */
     public void setCodicefiscale(int codicefiscale) 
     {
         this.codicefiscale = codicefiscale;
     }
-
+    /**
+     * modifica il valore dell'attributo data inizio soggiorno
+     * @param dataInizioSoggiorno 
+     */
     public void setDataInizioSoggiorno(LocalDate dataInizioSoggiorno) 
     {
         this.dataInizioSoggiorno = dataInizioSoggiorno;
     }
-
+    /**
+     * modifica il valore dell'attributo data fine soggiorno
+     * @param dataFineSoggiorno 
+     */
     public void setDataFineSoggiorno(LocalDate dataFineSoggiorno) 
     {
         this.dataFineSoggiorno = dataFineSoggiorno;
     }
-
+    /**
+     * modifica il valore dell'attributo codice prenotazione
+     * @param codicePrenotazione 
+     */
     public void setCodicePrenotazione(int codicePrenotazione)
     {
         this.codicePrenotazione = codicePrenotazione;
     }
     
     //toString
+    /**
+     * questo metodo mostra tutti gli attributi
+     * @return 
+     */
     public String toString()
     {
          String s;
